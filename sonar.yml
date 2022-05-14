@@ -22,6 +22,9 @@ phases:
       - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
       - unzip ./sonar-scanner-cli-4.7.0.2747-linux.zip
       - export PATH=$PATH:/sonar-scanner-4.7.0.2747-linux/bin/
+      - echo "$PATH"
+      - ls -la
+      - ./sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner
   build:
     commands:
       - pipenv run coverage run -m unittest discover -b
