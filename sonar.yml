@@ -18,18 +18,17 @@ phases:
       # - There are no build commands
   pre_build:
     commands:
-      - pipenv install --dev
       - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
       - unzip ./sonar-scanner-cli-4.7.0.2747-linux.zip
       - export PATH=$PATH:/sonar-scanner-4.7.0.2747-linux/bin/
       - echo "$PATH"
       - ls -la
-      - ./sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner
+      - pipenv install --dev
   build:
     commands:
       - pipenv run coverage run -m unittest discover -b
       - pipenv run coverage report -m  --include="src/*" --omit="*/test/*,src/__init__*"
-      - sonar-scanner -Dsonar.login=$LOGIN  -Dsonar.organization=akshatah33 -Dsonar.projectKey=akshatah33_python-hello-world  -Dsonar.sources=.  -Dsonar.host.url=$HOST
+      - ./sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner -Dsonar.login=$LOGIN  -Dsonar.organization=akshatah33 -Dsonar.projectKey=akshatah33_python-hello-world  -Dsonar.sources=.  -Dsonar.host.url=$HOST
   post_build:
     commands:
       - pipenv run python ./src/sample_hello_world_script.py
