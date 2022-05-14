@@ -20,8 +20,8 @@ phases:
     commands:
       - pipenv install --dev
       - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
-      - unzip ./sonar-scanner-cli-3.3.0.1492-linux.zip
-      - export PATH=$PATH:/sonar-scanner-3.3.0.1492-linux/bin/
+      - unzip ./sonar-scanner-cli-4.7.0.2747-linux.zip
+      - export PATH=$PATH:/sonar-scanner-4.7.0.2747-linux/bin/
   build:
     commands:
       - pipenv run coverage run -m unittest discover -b
